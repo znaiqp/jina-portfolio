@@ -17,8 +17,12 @@ ORKR의 절제된 타이포그래피, 분할 레이아웃, 고정 내비게이�
 
 한강터 영상은 `https://youtu.be/XqM5RE9RETE`의 클릭 재생 YouTube 임베드입니다. 홈 오른쪽 목록과 한강터 상세 페이지에서 재생할 수 있습니다. 외부 YouTube 링크도 제공됩니다.
 
+WEAVE KITCHEN 영상은 `https://youtu.be/OfqosCr1TNE`이며 위브 키친 상세 페이지에서 클릭해 재생할 수 있습니다. 영상 렌더러는 각 프로젝트의 `film` 데이터로 제목·미리보기·영상 ID를 설정합니다.
+
+한강터의 소개와 수상 내역은 사용자가 제공한 공공 정보 브랜딩 시스템 설명 및 2026 Red Dot Design Brand Communication Junior Award | Winner 문구를 반영했습니다.
+
 이미지는 `dist/assets/`, 이미지 설명과 표시 크기는 `dist/assets.js`와 `dist/weave-assets.js`에 있습니다. `prepare-assets.cjs`와 `prepare-weave-assets.cjs`는 제공된 원본을 보존하며 WebP 사본을 생성합니다. 실행 시 설치된 sharp 모듈의 경로를 인수로 전달합니다.
 
-위브 키친은 홈 오른쪽 목록의 첫 프로젝트와 Projects, Index의 Product 분류에 나타납니다. 상세 주소는 `#/project/weave-kitchen`입니다. 제작 연도는 제공되지 않아 표기하지 않았습니다. 프로젝트별 이미지 갤러리는 공통 렌더러를 사용하며, 한강터의 영상은 해당 프로젝트에만 표시됩니다.
+위브 키친은 홈 오른쪽 목록의 첫 프로젝트와 Projects, Index의 Product 분류에 나타납니다. 상세 주소는 `#/project/weave-kitchen`입니다. 제작 연도는 제공되지 않아 표기하지 않았습니다. 프로젝트별 이미지 갤러리와 영상은 공통 렌더러를 사용하며 각 프로젝트에 연결된 미디어를 표시합니다.
 
 분야 필터, 프로젝트 인덱스 미리보기, 상세 갤러리, 다음 프로젝트, 뒤로 가기, 모바일 레이아웃과 모션 줄이기를 지원합니다.

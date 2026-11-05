@@ -16,6 +16,10 @@
 .film-jump{display:block;width:max-content;margin-top:24px}
 .film-jump:hover{text-decoration:underline;text-underline-offset:4px}
 .project-subtitle{font-size:15px;line-height:1.6;letter-spacing:-.025em;word-break:keep-all;max-width:340px;margin:-18px 0 30px}
+.project-award{border-top:1px solid #d9d9d4;max-width:340px;margin-top:25px;padding-top:12px;font-size:11px;line-height:1.6}
+.project-award>span{color:var(--muted)}
+.project-award p{margin:5px 0 0}
+.detail-info{max-height:calc(100svh - 115px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
 .video-preview{margin-bottom:36px}
 .video-stage{position:relative;aspect-ratio:16/9;background:#111;overflow:hidden}
 .video-stage iframe{position:absolute;width:100%;height:100%;inset:0;border:0}
@@ -53,6 +57,7 @@
 .rail-item .video-preview{margin:0}
 .rail-item .video-caption{padding:8px 3px 20px}
 @media(max-width:800px){
+  .detail-info{max-height:none;overflow:visible;overscroll-behavior:auto}
   .is-home{overflow:auto}
   .is-home main{padding:66px 10px 65px}
   .is-home .header{height:58px;padding:12px 10px 0;grid-template-columns:37.5% 62.5%;line-height:1.28}
