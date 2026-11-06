@@ -27,7 +27,8 @@ const projects = [
 const types=['All','Product','Space','Brand identity','Editorial']
   .filter(type=>type==='All'||projects.some(p=>p.type===type));
 const main=document.querySelector('main');
-const cursor=document.querySelector('.cursor-label');
+const cursorLabel=document.querySelector('.cursor-label');
+const cursorLogo=document.querySelector('.cursor-logo');
 const state={filter:'All',view:null,rails:[0,0],route:'#/',cvReturn:'#/',cvReturnScroll:0,restoreCV:false};
 let disposeMotif=()=>{};
 let disposePreviews=()=>{};
@@ -96,7 +97,7 @@ function render({keepScroll=false}={}){
   if(state.view!=='cv')state.route=location.hash||'#/';
   document.body.classList.toggle('is-home',state.view==='home');
   document.body.classList.toggle('is-cv',state.view==='cv');
-  cursor.classList.remove('visible');
+  resetCursor();
   document.querySelectorAll('[data-nav]').forEach(a=>{
     if(a.dataset.nav===(state.view==='project'?'projects':state.view))a.setAttribute('aria-current','page');
     else a.removeAttribute('aria-current');
@@ -176,10 +177,6 @@ function bind(){
     state.filter=b.dataset.filter;render({keepScroll:true});
     main.querySelector(`[data-filter="${state.filter}"]`)?.focus({preventScroll:true});
   }));
-  main.querySelectorAll('[data-project]').forEach(a=>{
-    a.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')cursor.classList.add('visible')});
-    a.addEventListener('pointerleave',()=>cursor.classList.remove('visible'));
-  });
   bindIndexPreview();
   main.querySelectorAll('.video-poster').forEach(button=>button.addEventListener('click',()=>{
     const section=button.closest('.video-preview');
@@ -199,10 +196,38 @@ function bind(){
     film.querySelector('.video-poster,iframe,video')?.focus({preventScroll:true});
   });
 }
-document.addEventListener('pointermove',e=>{
-  cursor.style.left=`${Math.min(e.clientX,innerWidth-135)}px`;
-  cursor.style.top=`${Math.min(e.clientY,innerHeight-60)}px`;
-},{passive:true});
+function resetCursor(){
+  document.documentElement.classList.remove('has-logo-cursor');
+  cursorLabel.classList.remove('visible');
+}
+
+function updateCursor(event){
+  if(event.pointerType!=='mouse'){
+    resetCursor();
+    return;
+  }
+
+  const overProject=Boolean(event.target.closest?.('[data-project]'));
+  cursorLabel.classList.toggle('visible',overProject);
+  if(overProject){
+    cursorLabel.style.left=`${Math.min(event.clientX,innerWidth-135)}px`;
+    cursorLabel.style.top=`${Math.min(event.clientY,innerHeight-60)}px`;
+  }
+
+  const useNativeCursor=overProject||event.target.closest?.('iframe, video, .motif-viewport');
+  const showLogo=!useNativeCursor&&cursorLogo.complete&&cursorLogo.naturalWidth>0;
+  document.documentElement.classList.toggle('has-logo-cursor',showLogo);
+  if(showLogo){
+    cursorLogo.style.left=`${event.clientX}px`;
+    cursorLogo.style.top=`${event.clientY}px`;
+  }
+}
+
+document.addEventListener('pointerover',updateCursor,{passive:true});
+document.addEventListener('pointermove',updateCursor,{passive:true});
+document.addEventListener('pointercancel',resetCursor);
+document.documentElement.addEventListener('pointerleave',resetCursor);
+window.addEventListener('blur',resetCursor);
 document.querySelector('#top').addEventListener('click',()=>{
   const behavior=reduced?'instant':'smooth';window.scrollTo({top:0,behavior});
   main.querySelectorAll('.home-rail').forEach(rail=>rail.scrollTo({top:0,behavior}));
