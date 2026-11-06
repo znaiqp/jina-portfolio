@@ -1,5 +1,6 @@
 import { hangangAssets } from './assets.js';
 import { weaveAssets } from './weave-assets.js';
+import { profile } from './profile.js';
 const assets={...hangangAssets,...weaveAssets};
 
 // Supplied projects use their own image galleries. Other entries remain examples.
@@ -17,14 +18,14 @@ const projects = [
 const types=['All','Product','Space','Brand identity','Editorial'];
 const main=document.querySelector('main');
 const cursor=document.querySelector('.cursor-label');
-const state={filter:'All',view:null,rails:[0,0]};
+const state={filter:'All',view:null,rails:[0,0],route:'#/',cvReturn:'#/',cvReturnScroll:0,restoreCV:false};
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const selected=()=>projects.filter(p=>state.filter==='All'||p.type===state.filter);
 document.querySelector('.nav-count').textContent=String(projects.length).padStart(2,'0');
 
 function placeholder(p,asset='01',ratio=p.ratio){
-  return `<div class="placeholder" role="img" aria-label="${esc(p.title)} — image placeholder ${asset}" style="--ratio:${ratio};--bg:${p.bg}"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></svg><span class="asset-label" aria-hidden="true"><span>IMAGE ${asset}</span><span>HANGANG TUH</span></span></div>`;
+  return `<div class="placeholder" role="img" aria-label="${esc(p.title)} — image placeholder ${asset}" style="--ratio:${ratio};--bg:${p.bg}"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100"/><line x1="100" y1="0" x2="0" y2="100"/></svg><span class="asset-label" aria-hidden="true"><span>IMAGE ${asset}</span><span>${esc(profile.siteName)}</span></span></div>`;
 }
 function imageAsset(key,{eager=false}={}){
   const a=assets[key];
@@ -41,7 +42,7 @@ function videoPreview(p=projects[0]){
 function home(){
   const p=projects[0],weave=projects.find(p=>p.id==='weave-kitchen');
   const samples=projects.filter(p=>!p.gallery);
-  return `<h1 class="sr-only">HANGANG TUH — Selected works</h1><div class="home-grid"><section class="home-rail" tabindex="0" aria-label="왼쪽 프로젝트 목록 — 별도로 스크롤"><div class="rail-content">${railCard(p,'poster',{eager:true})}${samples.filter((_,i)=>i%2===0).map(p=>railCard(p)).join('')}<a class="rail-end" href="#/index">View project index ↗</a></div></section><section class="home-rail" tabindex="0" aria-label="오른쪽 프로젝트 목록 — 별도로 스크롤"><div class="rail-content">${railCard(weave,'weave-hero',{eager:true})}${railCard(p,'guide')}<article class="rail-item">${railMeta(p,'Brand film')}${videoPreview()}</article>${railCard(p,'signage')}${samples.filter((_,i)=>i%2===1).map(p=>railCard(p)).join('')}<a class="rail-end" href="#/info">Info ↗</a></div></section></div>`;
+  return `<h1 class="sr-only">${esc(profile.siteName)} — Selected works</h1><div class="home-grid"><section class="home-rail" tabindex="0" aria-label="왼쪽 프로젝트 목록 — 별도로 스크롤"><div class="rail-content">${railCard(p,'poster',{eager:true})}${samples.filter((_,i)=>i%2===0).map(p=>railCard(p)).join('')}<a class="rail-end" href="#/index">View project index ↗</a></div></section><section class="home-rail" tabindex="0" aria-label="오른쪽 프로젝트 목록 — 별도로 스크롤"><div class="rail-content">${railCard(weave,'weave-hero',{eager:true})}${railCard(p,'guide')}<article class="rail-item">${railMeta(p,'Brand film')}${videoPreview()}</article>${railCard(p,'signage')}${samples.filter((_,i)=>i%2===1).map(p=>railCard(p)).join('')}<a class="rail-end" href="#/cv">CV ↗</a></div></section></div>`;
 }
 function filterButtons(){return `<div class="filters" aria-label="Filter by discipline">${types.map(t=>`<button type="button" data-filter="${t}" class="${state.filter===t?'active':''}" aria-pressed="${state.filter===t}">${t}</button>`).join('')}</div>`}
 function grid(){const list=selected();return `<h1 class="sr-only">Projects</h1><div class="subbar"><span class="eyebrow">Projects / 2024—2026</span>${filterButtons()}<span class="results-count">${String(list.length).padStart(2,'0')} projects</span></div><div class="project-grid">${list.map(card).join('')}</div>`}
@@ -49,7 +50,11 @@ function index(){
   const list=selected();
   return `<h1 class="sr-only">Project index</h1><div class="index-layout"><aside class="index-sidebar"><p>Index<br><span class="eyebrow">2024—2026</span></p><p class="eyebrow">Type of work</p>${filterButtons()}<p class="index-caption">An overview of selected works.<br>프로젝트명에 마우스를 올려<br>이미지를 미리 볼 수 있습니다.</p></aside><section aria-label="Project index"><div class="index-table-head"><span>No.</span><span>Project</span><span>Discipline</span><span>Year</span></div>${list.map(p=>`<a class="index-row" href="#/project/${p.id}" data-preview="${p.id}"><span>${String(projects.indexOf(p)+1).padStart(2,'0')}</span><span class="row-title">${p.title}</span><span class="row-type">${p.type}</span><span class="row-year">${p.year} ↗</span></a>`).join('')}<div class="index-bottom"><span>${String(list.length).padStart(2,'0')} selected projects</span><span>Selected works & studies</span></div></section></div><div class="index-preview" aria-hidden="true"></div>`;
 }
-function info(){return `<div class="info-layout"><div class="info-caption">Info / About</div><article class="info-body"><h1>HANGANG TUH<br>Selected perspectives.</h1><p class="korean">익숙한 일상에서 질문을 발견하고,<br>사물과 공간, 이미지로 생각을 연결합니다.</p><p class="english">Finding questions in the everyday.<br>Connecting ideas through objects, spaces, and images.</p><a href="#/project/hangang-tuh" aria-label="한강터 프로젝트 보기">${imageAsset('hero')}</a><p class="draft-note">소개 문구 초안입니다. 자신의 디자인 관점과 관심 분야를 이곳에 적어주세요.<br>한강터와 위브 키친 외의 프로젝트는 구성을 보여주기 위한 예시 콘텐츠입니다.</p></article><aside class="info-aside"><section><h2>Name</h2><p>HANGANG TUH</p></section><section><h2>Disciplines</h2><p>Product<br>Space<br>Brand identity<br>Editorial</p></section><section><h2>Contact</h2><p>연락처는 추후 업데이트됩니다.</p></section><section><h2>Archive</h2><p>2024—2026<br>Selected works & experiments</p></section><section><h2>Featured projects</h2><p><a href="#/project/hangang-tuh">한강터 / HANGANG TUH ↗</a><br><a href="#/project/weave-kitchen">위브 키친 / WEAVE KITCHEN ↗</a></p></section></aside></div>`}
+function cvEntry(entry){return `<div class="cv-entry"><p>${esc(entry.title)}</p><p>${esc(entry.detail)}</p><p>${esc(entry.dates)}</p></div>`}
+function cv(){
+  return `<article class="cv-sheet" aria-label="Park Jina curriculum vitae"><div class="cv-toolbar"><h1>CV</h1><button type="button" data-close-cv aria-label="Close CV">(Close)</button></div><section class="cv-row cv-contact" aria-labelledby="cv-name"><h2 id="cv-name">${esc(profile.name)}</h2><div class="cv-detail"><a href="mailto:${esc(profile.email)}" class="cv-email">${esc(profile.email)}</a><div class="cv-socials">${profile.social.map(link=>`<a href="${esc(link.url)}" target="_blank" rel="noopener noreferrer">${esc(link.label)}</a>`).join('')}</div></div></section><section class="cv-row" aria-labelledby="cv-education"><h2 id="cv-education">Education</h2><div class="cv-detail">${profile.education.map(cvEntry).join('')}</div></section><section class="cv-row" aria-labelledby="cv-experience"><h2 id="cv-experience">Experience</h2><div class="cv-detail">${profile.experience.map(cvEntry).join('')}</div></section><section class="cv-row cv-awards" aria-labelledby="cv-award"><h2 id="cv-award">Award</h2><div class="cv-detail">${profile.awards.map(cvEntry).join('')}</div></section></article>`;
+}
+function closeCV(){state.restoreCV=true;location.hash=state.cvReturn}
 function gallery(p){
   if(!p.gallery)return `${placeholder(p,'01','1.3')}${placeholder(p,'02','.9')}<div class="asset-pair">${placeholder(p,'03')}${placeholder(p,'04')}</div>${placeholder(p,'05','1.6')}`;
   return p.gallery.map((key,i)=>{const a=assets[key],label=a.label||(key==='hero'?'Identity':key[0].toUpperCase()+key.slice(1));return `<figure class="gallery-figure">${imageAsset(key,{eager:i===0})}<figcaption><span>${String(i+1).padStart(2,'0')} / ${esc(label)}</span><span>${esc(a.alt)}</span></figcaption></figure>${p.film&&i===0?videoPreview(p):''}`}).join('');
@@ -61,8 +66,15 @@ function detail(p){
 function render({keepScroll=false}={}){
   if(state.view==='home')main.querySelectorAll('.home-rail').forEach((rail,i)=>state.rails[i]=rail.scrollTop);
   const path=location.hash.replace(/^#\/?/,'').split('/');
-  state.view=path[0]||'home';
+  const nextView=path[0]==='info'?'cv':path[0]||'home';
+  if(nextView==='cv'&&state.view!=='cv'){
+    state.cvReturn=state.route;
+    state.cvReturnScroll=window.scrollY;
+  }
+  state.view=nextView;
+  if(state.view!=='cv')state.route=location.hash||'#/';
   document.body.classList.toggle('is-home',state.view==='home');
+  document.body.classList.toggle('is-cv',state.view==='cv');
   cursor.classList.remove('visible');
   document.querySelectorAll('[data-nav]').forEach(a=>{
     if(a.dataset.nav===(state.view==='project'?'projects':state.view))a.setAttribute('aria-current','page');
@@ -75,13 +87,14 @@ function render({keepScroll=false}={}){
     html=p?detail(p):'<p>Project not found.</p><a class="back-link" href="#/projects">← All projects</a>';
     title=p?.title||'Project not found';
   }else{
-    html=state.view==='projects'?grid():state.view==='index'?index():state.view==='info'?info():home();
-    title=state.view==='home'?'Portfolio':state.view[0].toUpperCase()+state.view.slice(1);
+    html=state.view==='projects'?grid():state.view==='index'?index():state.view==='cv'?cv():home();
+    title=state.view==='home'?'Portfolio':state.view==='cv'?'CV':state.view[0].toUpperCase()+state.view.slice(1);
   }
-  main.innerHTML=`<div class="${state.view==='home'?'home-view':keepScroll?'':'page-enter'}">${html}</div>`;
-  document.title=title==='HANGANG TUH'?'HANGANG TUH — 한강터':`${title} — HANGANG TUH`;
+  main.innerHTML=`<div class="${state.view==='home'?'home-view':state.view==='cv'?'cv-view':keepScroll?'':'page-enter'}">${html}</div>`;
+  document.title=`${title} — ${profile.siteName}`;
   document.querySelector('#announcement').textContent=keepScroll?`${selected().length} projects shown`:title;
-  if(!keepScroll)window.scrollTo({top:0,behavior:'instant'});
+  if(!keepScroll)window.scrollTo({top:state.restoreCV?state.cvReturnScroll:0,behavior:'instant'});
+  state.restoreCV=false;
   bind();
   if(state.view==='home')main.querySelectorAll('.home-rail').forEach((rail,i)=>rail.scrollTop=state.rails[i]);
 }
@@ -94,6 +107,7 @@ function bindAssetErrors(root=main){
 }
 function bind(){
   bindAssetErrors();
+  main.querySelector('[data-close-cv]')?.addEventListener('click',closeCV);
   main.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{
     state.filter=b.dataset.filter;render({keepScroll:true});
     main.querySelector(`[data-filter="${state.filter}"]`)?.focus({preventScroll:true});
@@ -138,4 +152,5 @@ document.querySelector('.skip-link').addEventListener('click',e=>{
   e.preventDefault();(main.querySelector('.home-rail')||main).focus({preventScroll:true});
 });
 window.addEventListener('hashchange',()=>{state.filter='All';render();main.focus({preventScroll:true})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&state.view==='cv')closeCV()});
 render();
