@@ -2,15 +2,15 @@
 export const projectCredits={
   'hangang-tuh':{
     team:true,
-    roles:['그래픽 모티프 개발','브랜드 필름 제작','AI 이미지 생성']
+    roles:['Graphic motif development','Brand film production','AI image generation']
   },
   'vegemil':{
     team:true,
     cover:'vegemil-pocket',
-    roles:['그래픽 모티프 제작','키비주얼 제작','브랜드 필름 제작']
+    roles:['Graphic motif creation','Key visual creation','Brand film production']
   },
   'weave-kitchen':{
     team:true,
-    roles:['제품 개발 참여','시안 제안','프로덕트 필름 제작','브랜드 네이밍']
+    roles:['Product development collaboration','Design concept proposals','Product film production','Brand naming']
   }
 };

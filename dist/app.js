@@ -79,7 +79,7 @@ function gallery(p){
 function detail(p){
   const n=projects[(projects.indexOf(p)+1)%projects.length];
   const awards=p.awards?.length?`<section class="project-award" aria-label="수상 내역"><span>${p.awards.length===1?'Award':'Awards'}</span>${p.awards.map(award=>`<p>${esc(award)}</p>`).join('')}</section>`:'';
-  const credits=p.team?`<dt>Type</dt><dd>Team project / 팀 프로젝트</dd><dt>My role</dt><dd><ul class="project-roles" aria-label="담당 역할">${p.roles.map(role=>`<li>${esc(role)}</li>`).join('')}</ul></dd>`:'';
+  const credits=p.team?`<dt>Type</dt><dd>Team project</dd><dt>My role</dt><dd><ul class="project-roles" aria-label="My role">${p.roles.map(role=>`<li>${esc(role)}</li>`).join('')}</ul></dd>`:'';
   return `<div class="detail-layout"><aside class="detail-info"><span class="detail-number">Project ${String(projects.indexOf(p)+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span><h1>${p.title}</h1>${p.fullTitle?`<h2 class="project-full-title">${esc(p.fullTitle)}</h2>`:''}${p.subtitle?`<p class="project-subtitle">${esc(p.subtitle)}</p>`:''}<dl><dt>Project</dt><dd>${p.ko}</dd><dt>Discipline</dt><dd>${p.disciplines||p.type}</dd>${p.material?`<dt>Material</dt><dd>${p.material}</dd>`:''}${p.year==='—'?'':`<dt>Year</dt><dd>${p.year}</dd>`}${credits}</dl><p class="description">${p.description}</p>${awards}${p.film?'<a class="film-jump" href="#film" data-film-jump>Watch film ↓</a>':''}<a href="#/projects" class="back-link">← All projects</a></aside><article class="detail-assets" aria-label="${p.title} gallery">${gallery(p)}<a class="next-project" href="#/project/${n.id}"><span>Next project</span><span>${n.title} ↗</span></a></article></div>`;
 }
 function render({keepScroll=false}={}){
