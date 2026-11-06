@@ -41,7 +41,7 @@ function railMeta(p,label=p.disciplines||p.type){return `<a class="rail-meta" hr
 function railCard(p,key=p.cover,{eager=false}={}){return `<article class="rail-item">${railMeta(p)}<a class="rail-cover" data-project="${p.id}" href="#/project/${p.id}" aria-label="${p.title} 프로젝트 보기">${key?imageAsset(key,{eager}):placeholder(p)}</a></article>`}
 function videoPreview(p=projects[0]){
   const a=assets[p.cover];
-  if(p.film.src)return `<section class="video-preview" aria-label="${esc(p.film.label)}"><div class="video-stage"><video controls playsinline preload="none" poster="${a.src}" aria-label="${esc(p.film.label)}"><source src="${esc(p.film.src)}" type="video/mp4">이 브라우저에서 영상을 재생할 수 없습니다. 아래 링크로 영상을 열어주세요.</video></div><div class="video-caption"><span role="status" class="video-status">${esc(p.film.label)}</span><a href="${esc(p.film.src)}" target="_blank" rel="noopener noreferrer">영상 파일 열기 ↗</a></div></section>`;
+  if(p.film.src)return `<section class="video-preview" aria-label="${esc(p.film.label)}"><div class="video-stage"><video controls controlslist="nodownload" playsinline preload="none" poster="${a.src}" aria-label="${esc(p.film.label)}"><source src="${esc(p.film.src)}" type="video/mp4">이 브라우저에서 영상을 재생할 수 없습니다. 최신 브라우저에서 다시 시도해 주세요.</video></div><div class="video-caption"><span role="status" class="video-status">${esc(p.film.label)}</span></div></section>`;
   return `<section class="video-preview" aria-label="${esc(p.film.label)}" data-video-id="${esc(p.film.id)}" data-video-title="${esc(p.title+' — '+p.film.label)}" data-video-label="${esc(p.film.label)}"><div class="video-stage"><button type="button" class="video-poster" aria-label="${esc(p.ko)} 영상 재생"><img src="${a.src}" alt="" width="${a.width}" height="${a.height}" loading="lazy"><span class="play-icon" aria-hidden="true">▶</span><span class="video-poster-caption">${p.title}<span>Play film ↗</span></span></button></div><div class="video-caption"><span role="status" class="video-status">${esc(p.film.label)}</span><a href="https://youtu.be/${esc(p.film.id)}" target="_blank" rel="noopener noreferrer">YouTube에서 보기 ↗</a></div></section>`;
 }
 function home(){
@@ -119,7 +119,10 @@ function bindAssetErrors(root=main){
 function bind(){
   bindAssetErrors();
   disposeMotif=bindMotifMotion(main);
-  main.querySelectorAll('.video-stage video').forEach(video=>video.addEventListener('error',()=>{video.closest('.video-preview').querySelector('.video-status').textContent='영상을 불러오지 못했습니다. 영상 파일 열기를 이용해 주세요.'}));
+  main.querySelectorAll('.video-stage video').forEach(video=>{
+    video.addEventListener('contextmenu',event=>event.preventDefault());
+    video.addEventListener('error',()=>{video.closest('.video-preview').querySelector('.video-status').textContent='영상을 불러오지 못했습니다. 페이지를 새로고침해 다시 시도해 주세요.'});
+  });
   main.querySelector('[data-close-cv]')?.addEventListener('click',closeCV);
   main.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{
     state.filter=b.dataset.filter;render({keepScroll:true});
