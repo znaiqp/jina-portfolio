@@ -33,6 +33,8 @@ WEAVE KITCHEN 영상은 `https://youtu.be/OfqosCr1TNE`이며 위브 키친 상�
 
 이미지는 `dist/assets/`, 이미지 설명과 표시 크기는 `dist/assets.js`와 `dist/weave-assets.js`에 있습니다. `prepare-assets.cjs`와 `prepare-weave-assets.cjs`는 제공된 원본을 보존하며 WebP 사본을 생성합니다. 실행 시 설치된 sharp 모듈의 경로를 인수로 전달합니다.
 
+GRIPS는 홈 오른쪽 목록과 Projects 및 Index의 Product 분류에 나타납니다. 라켓을 잡은 사진을 썸네일로 사용하며, 상세 주소는 `#/project/grips`입니다. 이미지 9장의 정보는 `dist/grips-assets.js`에서 관리합니다.
+
 위브 키친은 홈 오른쪽 목록의 첫 프로젝트와 Projects, Index의 Product 분류에 나타납니다. 상세 주소는 `#/project/weave-kitchen`입니다. 제작 연도는 제공되지 않아 표기하지 않았습니다. 프로젝트별 이미지 갤러리와 영상은 공통 렌더러를 사용하며 각 프로젝트에 연결된 미디어를 표시합니다.
 
 분야 필터, 프로젝트 인덱스 미리보기, 상세 갤러리, 다음 프로젝트, 뒤로 가기, 모바일 레이아웃과 모션 줄이기를 지원합니다.
