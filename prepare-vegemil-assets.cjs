@@ -9,6 +9,7 @@ const inputs=[
   ['logo-ko','Clear Space 규정_국문.png','Korean logotype','베지밀 국문 로고의 조합과 여백 규정'],
   ['logo-en','Clear Space 규정_국문-1.png','English logotype','베지밀 영문 로고의 조합과 여백 규정'],
   ['graphics','Slide 16_9 - 6.png','Graphic system','원형 단위와 유기적인 선으로 연결되는 베지밀 그래픽 시스템'],
+  ['motif','베지밀 긴 모티프.png','Balanced Circle for All','모든 세대의 건강한 일상을 하나의 흰색 모티프로 잇는 베지밀 브랜드 이미지'],
   ['packages','패키지.png','Package design','세대별 일상을 위한 네 가지 베지밀 패키지 디자인'],
   ['prototypes','패키지-5.png','Prototyping','여러 단계의 실제 패키지 프로토타입과 최종 디자인'],
   ['gift','Slide 16_9 - 23.png','Gift package','Balanced Circle for All 메시지를 담은 베지밀 선물 세트'],
@@ -32,7 +33,8 @@ const inputs=[
   const assets={};
   for(const [key,file,label,alt] of inputs){
     const dest=`vegemil-${key}.webp`;
-    const info=await sharp(path.join('F:/베지밀_포트폴리오',file)).rotate().resize({width:2400,height:2400,fit:'inside',withoutEnlargement:true}).webp({quality:90,effort:5}).toFile(path.join(output,dest));
+    const max=key==='motif'?4000:2400;
+    const info=await sharp(path.join('F:/베지밀_포트폴리오',file)).rotate().resize({width:max,height:max,fit:'inside',withoutEnlargement:true}).webp({quality:90,effort:5}).toFile(path.join(output,dest));
     assets[`vegemil-${key}`]={src:`assets/${dest}`,width:info.width,height:info.height,label,alt};
     console.log(`${dest}: ${info.width}x${info.height}, ${Math.round(info.size/1024)} KB`);
   }

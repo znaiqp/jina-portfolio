@@ -1,6 +1,7 @@
 import { hangangAssets } from './assets.js';
 import { weaveAssets } from './weave-assets.js';
 import { vegemilAssets } from './vegemil-assets.js';
+import { bindMotifMotion } from './motif.js';
 import { profile } from './profile.js';
 const assets={...hangangAssets,...weaveAssets,...vegemilAssets};
 
@@ -21,6 +22,7 @@ const types=['All','Product','Space','Brand identity','Editorial'];
 const main=document.querySelector('main');
 const cursor=document.querySelector('.cursor-label');
 const state={filter:'All',view:null,rails:[0,0],route:'#/',cvReturn:'#/',cvReturnScroll:0,restoreCV:false};
+let disposeMotif=()=>{};
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const selected=()=>projects.filter(p=>state.filter==='All'||p.type===state.filter);
@@ -58,15 +60,21 @@ function cv(){
   return `<article class="cv-sheet" aria-label="Park Jina curriculum vitae"><div class="cv-toolbar"><h1>CV</h1><button type="button" data-close-cv aria-label="Close CV">(Close)</button></div><section class="cv-row cv-contact" aria-labelledby="cv-name"><h2 id="cv-name">${esc(profile.name)}</h2><div class="cv-detail"><a href="mailto:${esc(profile.email)}" class="cv-email">${esc(profile.email)}</a><div class="cv-socials">${profile.social.map(link=>`<a href="${esc(link.url)}" target="_blank" rel="noopener noreferrer">${esc(link.label)}</a>`).join('')}</div></div></section><section class="cv-row" aria-labelledby="cv-education"><h2 id="cv-education">Education</h2><div class="cv-detail">${profile.education.map(cvEntry).join('')}</div></section><section class="cv-row" aria-labelledby="cv-experience"><h2 id="cv-experience">Experience</h2><div class="cv-detail">${profile.experience.map(cvEntry).join('')}</div></section><section class="cv-row cv-awards" aria-labelledby="cv-award"><h2 id="cv-award">Award</h2><div class="cv-detail">${profile.awards.map(cvEntry).join('')}</div></section></article>`;
 }
 function closeCV(){state.restoreCV=true;location.hash=state.cvReturn}
+function motifFigure(number){
+  const a=assets['vegemil-motif'];
+  return `<figure class="gallery-figure motif-figure"><div class="motif-scroll" data-motif><div class="motif-viewport" tabindex="0" role="region" aria-label="베지밀 긴 모티프" aria-describedby="motif-instructions"><img class="motif-image" src="${a.src}" width="${a.width}" height="${a.height}" alt="${esc(a.alt)}" loading="lazy" decoding="async" draggable="false"></div></div><figcaption><span>${String(number).padStart(2,'0')} / ${esc(a.label)}</span><span class="motif-hint"><span class="motif-hover-hint">Hover to explore →</span><span class="motif-scroll-hint">Scroll to explore →</span></span></figcaption><p class="sr-only" id="motif-instructions">마우스를 올리면 이미지가 천천히 오른쪽으로 이동합니다. 키보드 좌우 방향키로도 이동할 수 있습니다. 모바일에서는 아래로 스크롤해 전체 이미지를 볼 수 있습니다.</p></figure>`;
+}
 function gallery(p){
   if(!p.gallery)return `${placeholder(p,'01','1.3')}${placeholder(p,'02','.9')}<div class="asset-pair">${placeholder(p,'03')}${placeholder(p,'04')}</div>${placeholder(p,'05','1.6')}`;
-  return p.gallery.map((key,i)=>{const a=assets[key],label=a.label||(key==='hero'?'Identity':key[0].toUpperCase()+key.slice(1));return `<figure class="gallery-figure">${imageAsset(key,{eager:i===0})}<figcaption><span>${String(i+1).padStart(2,'0')} / ${esc(label)}</span><span>${esc(a.alt)}</span></figcaption></figure>${p.film&&i===0?videoPreview(p):''}`}).join('');
+  const keys=p.id==='vegemil'?p.gallery.flatMap(key=>key==='vegemil-graphics'?[key,'vegemil-motif']:[key]):p.gallery;
+  return keys.map((key,i)=>{if(key==='vegemil-motif')return motifFigure(i+1);const a=assets[key],label=a.label||(key==='hero'?'Identity':key[0].toUpperCase()+key.slice(1));return `<figure class="gallery-figure">${imageAsset(key,{eager:i===0})}<figcaption><span>${String(i+1).padStart(2,'0')} / ${esc(label)}</span><span>${esc(a.alt)}</span></figcaption></figure>${p.film&&i===0?videoPreview(p):''}`}).join('');
 }
 function detail(p){
   const n=projects[(projects.indexOf(p)+1)%projects.length];
   return `<div class="detail-layout"><aside class="detail-info"><span class="detail-number">Project ${String(projects.indexOf(p)+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span><h1>${p.title}</h1>${p.fullTitle?`<h2 class="project-full-title">${esc(p.fullTitle)}</h2>`:''}${p.subtitle?`<p class="project-subtitle">${esc(p.subtitle)}</p>`:''}<dl><dt>Project</dt><dd>${p.ko}</dd><dt>Discipline</dt><dd>${p.disciplines||p.type}</dd>${p.material?`<dt>Material</dt><dd>${p.material}</dd>`:''}${p.year==='—'?'':`<dt>Year</dt><dd>${p.year}</dd>`}${p.gallery?'':`<dt>Status</dt><dd>Sample project / 예시 콘텐츠</dd>`}</dl><p class="description">${p.description}</p>${p.award?`<section class="project-award" aria-label="수상 내역"><span>Award</span><p>${esc(p.award)}</p></section>`:''}${p.film?'<a class="film-jump" href="#film" data-film-jump>Watch film ↓</a>':''}<a href="#/projects" class="back-link">← All projects</a></aside><article class="detail-assets" aria-label="${p.title} gallery">${gallery(p)}<a class="next-project" href="#/project/${n.id}"><span>Next project</span><span>${n.title} ↗</span></a></article></div>`;
 }
 function render({keepScroll=false}={}){
+  disposeMotif();
   if(state.view==='home')main.querySelectorAll('.home-rail').forEach((rail,i)=>state.rails[i]=rail.scrollTop);
   const path=location.hash.replace(/^#\/?/,'').split('/');
   const nextView=path[0]==='info'?'cv':path[0]||'home';
@@ -110,6 +118,7 @@ function bindAssetErrors(root=main){
 }
 function bind(){
   bindAssetErrors();
+  disposeMotif=bindMotifMotion(main);
   main.querySelectorAll('.video-stage video').forEach(video=>video.addEventListener('error',()=>{video.closest('.video-preview').querySelector('.video-status').textContent='영상을 불러오지 못했습니다. 영상 파일 열기를 이용해 주세요.'}));
   main.querySelector('[data-close-cv]')?.addEventListener('click',closeCV);
   main.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{

@@ -13,6 +13,20 @@
 .gallery-figure{margin:0 0 36px}
 .gallery-figure figcaption{display:flex;justify-content:space-between;gap:16px;padding:8px 0;color:var(--muted);font-size:10px;line-height:1.4}
 .gallery-figure figcaption span:last-child{text-align:right}
+.motif-scroll{--motif-height:clamp(230px,28vw,360px);position:relative}
+.motif-viewport{height:var(--motif-height);overflow-x:auto;overflow-y:hidden;position:relative;background:#f2f0e9;outline-offset:3px}
+.motif-image{display:block;height:100%;width:auto;max-width:none;user-select:none}
+.motif-scroll[data-mode=hover] .motif-viewport,.motif-scroll[data-mode=scroll] .motif-viewport{overflow:hidden}
+.motif-scroll[data-mode=hover] .motif-viewport{cursor:e-resize}
+.motif-scroll[data-mode=hover] .motif-image,.motif-scroll[data-mode=scroll] .motif-image{will-change:transform}
+.motif-scroll[data-mode=scroll]{height:calc(var(--motif-height) + var(--motif-travel,0px))}
+.motif-scroll[data-mode=scroll] .motif-viewport{position:sticky;top:calc((100svh - var(--motif-height))/2)}
+.motif-scroll-hint{display:none}
+@media(max-width:800px),(hover:none){
+  .motif-scroll{--motif-height:clamp(210px,60vw,280px)}
+  .motif-hover-hint{display:none}
+  .motif-scroll-hint{display:inline}
+}
 .film-jump{display:block;width:max-content;margin-top:24px}
 .film-jump:hover{text-decoration:underline;text-underline-offset:4px}
 .project-subtitle{font-size:15px;line-height:1.6;letter-spacing:-.025em;word-break:keep-all;max-width:340px;margin:-18px 0 30px}

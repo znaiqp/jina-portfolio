@@ -42,6 +42,13 @@ export const vegemilAssets = {
     "label": "Graphic system",
     "alt": "원형 단위와 유기적인 선으로 연결되는 베지밀 그래픽 시스템"
   },
+  "vegemil-motif": {
+    "src": "assets/vegemil-motif.webp",
+    "width": 3867,
+    "height": 684,
+    "label": "Balanced Circle for All",
+    "alt": "모든 세대의 건강한 일상을 하나의 흰색 모티프로 잇는 베지밀 브랜드 이미지"
+  },
   "vegemil-packages": {
     "src": "assets/vegemil-packages.webp",
     "width": 1920,
