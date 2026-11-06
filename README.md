@@ -28,18 +28,20 @@ CV는 `#/cv`이며 이전 `#/info` 링크도 CV로 연결됩니다. Close 또는
 
 WEAVE KITCHEN 영상은 `https://youtu.be/OfqosCr1TNE`이며 위브 키친 상세 페이지에서 클릭해 재생할 수 있습니다. 영상 렌더러는 각 프로젝트의 `film` 데이터로 제목·미리보기·영상 ID를 설정합니다.
 
-한강터의 소개와 수상 내역은 사용자가 제공한 공공 정보 브랜딩 시스템 설명 및 2026 Red Dot Design Brand Communication Junior Award | Winner 문구를 반영했습니다.
+한강터 상세 페이지에는 2026 Red Dot Design Brand Communication Junior Award | Winner, IDEA 2026 Winner, K-Design Award Finalist를 표시합니다.
 
 이미지는 `dist/assets/`, 이미지 설명과 표시 크기는 `dist/assets.js`와 `dist/weave-assets.js`에 있습니다. `prepare-assets.cjs`와 `prepare-weave-assets.cjs`는 제공된 원본을 보존하며 WebP 사본을 생성합니다. 실행 시 설치된 sharp 모듈의 경로를 인수로 전달합니다.
 
-GRIPS는 홈 오른쪽 목록과 Projects 및 Index의 Product 분류에 나타납니다. 제품 렌더링을 썸네일과 상세 갤러리의 첫 이미지로 사용하며, 상세 주소는 `#/project/grips`입니다. 이미지 9장의 정보는 `dist/grips-assets.js`에서 관리합니다.
+2026년 프로젝트인 GRIPS는 홈 오른쪽 목록과 Projects 및 Index의 Product 분류에 나타납니다. 제품 렌더링을 썸네일과 상세 갤러리의 첫 이미지로 사용하며, 상세 주소는 `#/project/grips`입니다. 이미지 9장의 정보는 `dist/grips-assets.js`에서 관리합니다.
 
-위브 키친은 홈 오른쪽 목록의 첫 프로젝트와 Projects, Index의 Product 분류에 나타납니다. 상세 주소는 `#/project/weave-kitchen`입니다. 제작 연도는 제공되지 않아 표기하지 않았습니다. 프로젝트별 이미지 갤러리와 영상은 공통 렌더러를 사용하며 각 프로젝트에 연결된 미디어를 표시합니다.
+위브 키친은 홈 오른쪽 목록의 첫 프로젝트와 Projects, Index의 Product 분류에 나타납니다. 상세 주소는 `#/project/weave-kitchen`입니다. 제작 연도는 2026년입니다. 프로젝트별 이미지 갤러리와 영상은 공통 렌더러를 사용하며 각 프로젝트에 연결된 미디어를 표시합니다.
 
 Projects에서는 썸네일에 마우스를 올리거나 카드에 키보드로 초점을 주면 갤러리 이미지가 순서대로 재생됩니다. 마우스를 떼거나 초점을 옮기면 썸네일로 돌아가며, 모션 줄이기 설정에서는 정지 이미지를 표시합니다.
 
-분야 필터, 프로젝트 인덱스 미리보기, 상세 갤러리, 다음 프로젝트, 뒤로 가기, 모바일 레이아웃과 모션 줄이기를 지원합니다.
+Index 미리보기는 마우스를 올리거나 키보드로 초점을 준 프로젝트 행 바로 아래에 목록 너비로 표시됩니다.
 
-베지밀 상세 주소는 `#/project/vegemil`입니다. 홈 왼쪽에서 한강터 다음에 나타나며, Projects와 Index의 Brand identity 분류에 표시됩니다. 제작 연도는 제공되지 않아 상세 페이지에서 생략했습니다. 제공된 전체 제목과 대한디자인전람회 특선 문구를 상세 설명에 표시합니다.
+분야 필터, 상세 갤러리, 다음 프로젝트, 뒤로 가기, 모바일 레이아웃과 모션 줄이기를 지원합니다.
+
+베지밀 상세 주소는 `#/project/vegemil`입니다. 홈 왼쪽에서 한강터 다음에 나타나며, Projects와 Index의 Brand identity 분류에 표시됩니다. 상세 페이지에 제작 연도 2026년, 전체 제목, Korea International Award | 특선을 표시합니다.
 
 `prepare-vegemil-assets.cjs`는 원본을 보존하며 WebP 이미지 22장을 만들고 `dist/vegemil-assets.js`에 설명과 크기를 기록합니다. 기존 이미지 스크립트처럼 sharp 경로를 인수로 전달합니다. `prepare-vegemil-video.cjs`에는 설치된 FFmpeg 실행 파일 경로를 전달합니다. 원본 영상을 1080p H.264/AAC, 2-pass 1500kbps 비디오와 128kbps 오디오, fast-start MP4로 변환합니다. 웹용 사본은 `dist/assets/vegemil-film.mp4`이며 영상 전체 길이와 오디오를 유지합니다. 상세 페이지의 HTML5 플레이어는 사용자 조작으로 재생되며, 재생 전에는 영상을 내려받지 않습니다. 로컬 서버는 MP4 Range 요청을 지원합니다.

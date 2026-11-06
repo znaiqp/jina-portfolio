@@ -7,8 +7,8 @@
 .project-grid .project-media img{height:100%;object-fit:cover}
 .project-grid .preview-frame{position:absolute;inset:0}
 .project-media img{transition:opacity .2s}
-.index-preview .project-media{aspect-ratio:1.2}
-.index-preview .project-media img{height:100%;object-fit:contain;background:#f1f1ed}
+.index-preview{position:absolute;top:100%;left:0;right:0;z-index:10;pointer-events:none}
+.index-preview .project-media img{max-height:72svh;object-fit:contain;object-position:top center}
 .info-body .project-media{margin-bottom:30px}
 .gallery-figure{margin:0 0 36px}
 .gallery-figure figcaption{display:flex;justify-content:space-between;gap:16px;padding:8px 0;color:var(--muted);font-size:10px;line-height:1.4}

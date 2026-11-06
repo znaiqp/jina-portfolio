@@ -9,16 +9,16 @@ import { projectCredits } from './project-credits.js';
 const assets={...hangangAssets,...weaveAssets,...vegemilAssets,...gripsAssets};
 
 const projects = [
-  {id:'hangang-tuh',title:'HANGANG TUH',ko:'한강터',type:'Brand identity',disciplines:'Brand identity, Pictogram, Signage',year:'2026',cover:'hero',film:{id:'XqM5RE9RETE',label:'한강터 브랜드 필름'},subtitle:'한강의 인파 밀집 위험과 정보 전달을 위해 설계된 공공 정보 브랜딩 시스템.',award:'2026 Red Dot Design Brand Communication Junior Award | Winner',gallery:['hero','posters','campaign','pictograms','signage','poster','guide'],description:'한강터는 인파 밀집 위험과 교통 혼잡을 줄이고, 한강의 문화유산과 254가지에 달하는 활동 정보를 전달하는 공공 정보 브랜딩 시스템입니다. AI 기반 인파 밀집도 분석으로 축제 방문객을 안전한 경로로 안내하며, 활동을 액티비티·어반·리프레쉬·개더링의 4개 구역으로 분류합니다. 로고의 원형 단위를 활용한 디자인과 픽토그램으로 일관되고 직관적인 시각 언어를 구축했습니다. 안내 표지판·지도·모바일 앱·안전 경로 안내에 적용해 활동 정보와 공간 구역, 위험 지역을 쉽게 파악하고 한강을 안전하고 명확하게 경험하도록 돕습니다.'},
-  {id:'weave-kitchen',title:'WEAVE KITCHEN',ko:'위브 키친',type:'Product',disciplines:'Product, Furniture',year:'—',cover:'weave-hero',material:'인조대리석',film:{id:'OfqosCr1TNE',label:'위브 키친 프로젝트 영상'},subtitle:'2인 이상의 교류와 다이닝 경험을 확장하는 관계 중심형 아일랜드 식탁',gallery:['weave-hero','weave-overall','weave-cantilever','weave-construction','weave-sink','weave-faucet','weave-storage','weave-wine'],description:'위브(WEAVE)는 2인 이상의 교류와 다이닝 경험을 확장하는 관계 중심형 아일랜드 식탁입니다. 모듈러 주방의 삼각형 조리 동선과 체류 높이를 고려해 준비부터 식사까지 이어지도록 설계했습니다. 한쪽에 배치한 캔틸레버 구조로 다리 공간을 확보해 마주 앉아 대화할 수 있으며, 측면 수납과 싱크·수전은 식사 준비와 와인 칠링을 돕습니다. 직선적인 작업 공간과 곡선적인 교류 공간을 결합하고, 인조대리석 일체형 몰드 성형으로 유려한 형태와 양산 가능성을 고려했습니다. 조리와 식사, 취미와 대화가 어우러지는 생활의 중심을 제안합니다.'},
-  {id:'vegemil',title:'VEGEMIL',ko:'베지밀',fullTitle:'세대를 잇는 50년의 온기: 국민음료 베지밀 프로젝트',type:'Brand identity',disciplines:'Brand identity, Packaging, Brand experience',year:'—',cover:'vegemil-hero',film:{src:'assets/vegemil-film.mp4',label:'베지밀 프로젝트 영상'},subtitle:'모든 세대의 건강한 일상을 제안하는 베지밀 웰니스 리브랜딩 프로젝트.',award:'대한디자인전람회 | 특선',gallery:['vegemil-hero','vegemil-sharing','vegemil-identity','vegemil-logo-ko','vegemil-logo-en','vegemil-graphics','vegemil-packages','vegemil-prototypes','vegemil-gift','vegemil-gift-life','vegemil-pocket','vegemil-together','vegemil-daily','vegemil-shirt','vegemil-shirt-back','vegemil-shirt-detail','vegemil-shirt-life','vegemil-pyramid','vegemil-bottles','vegemil-keyring','vegemil-bloom-lab','vegemil-wellness-space'],description:'베지밀의 50년 헤리티지와 신뢰를 바탕으로, 모든 세대가 일상에서 선택하는 웰니스 브랜드로 재정의했습니다. 고착화된 이미지를 개선하고 젊은 세대와의 접점을 넓히기 위해 ‘모두를 위한 균형(Balanced Circle for All)’을 중심으로 패키지와 그래픽 시스템을 재설계했습니다. 재활용 가능한 선물형 패키지와 굿즈로 지속 가능한 소비를 제안하고, 오프라인 공간 ‘Vege Bloom Lab’에서 건강한 일상을 경험하도록 설계해 브랜드 경험을 확장했습니다. 이를 통해 건강한 소비와 지속 가능한 식문화를 연결하는 브랜드 방향성을 제시합니다.'},
+  {id:'hangang-tuh',title:'HANGANG TUH',ko:'한강터',type:'Brand identity',disciplines:'Brand identity, Pictogram, Signage',year:'2026',cover:'hero',film:{id:'XqM5RE9RETE',label:'한강터 브랜드 필름'},subtitle:'한강의 인파 밀집 위험과 정보 전달을 위해 설계된 공공 정보 브랜딩 시스템.',awards:['2026 Red Dot Design Brand Communication Junior Award | Winner','IDEA 2026 Winner','K-Design Award Finalist'],gallery:['hero','posters','campaign','pictograms','signage','poster','guide'],description:'한강터는 인파 밀집 위험과 교통 혼잡을 줄이고, 한강의 문화유산과 254가지에 달하는 활동 정보를 전달하는 공공 정보 브랜딩 시스템입니다. AI 기반 인파 밀집도 분석으로 축제 방문객을 안전한 경로로 안내하며, 활동을 액티비티·어반·리프레쉬·개더링의 4개 구역으로 분류합니다. 로고의 원형 단위를 활용한 디자인과 픽토그램으로 일관되고 직관적인 시각 언어를 구축했습니다. 안내 표지판·지도·모바일 앱·안전 경로 안내에 적용해 활동 정보와 공간 구역, 위험 지역을 쉽게 파악하고 한강을 안전하고 명확하게 경험하도록 돕습니다.'},
+  {id:'weave-kitchen',title:'WEAVE KITCHEN',ko:'위브 키친',type:'Product',disciplines:'Product, Furniture',year:'2026',cover:'weave-hero',material:'인조대리석',film:{id:'OfqosCr1TNE',label:'위브 키친 프로젝트 영상'},subtitle:'2인 이상의 교류와 다이닝 경험을 확장하는 관계 중심형 아일랜드 식탁',gallery:['weave-hero','weave-overall','weave-cantilever','weave-construction','weave-sink','weave-faucet','weave-storage','weave-wine'],description:'위브(WEAVE)는 2인 이상의 교류와 다이닝 경험을 확장하는 관계 중심형 아일랜드 식탁입니다. 모듈러 주방의 삼각형 조리 동선과 체류 높이를 고려해 준비부터 식사까지 이어지도록 설계했습니다. 한쪽에 배치한 캔틸레버 구조로 다리 공간을 확보해 마주 앉아 대화할 수 있으며, 측면 수납과 싱크·수전은 식사 준비와 와인 칠링을 돕습니다. 직선적인 작업 공간과 곡선적인 교류 공간을 결합하고, 인조대리석 일체형 몰드 성형으로 유려한 형태와 양산 가능성을 고려했습니다. 조리와 식사, 취미와 대화가 어우러지는 생활의 중심을 제안합니다.'},
+  {id:'vegemil',title:'VEGEMIL',ko:'베지밀',fullTitle:'세대를 잇는 50년의 온기: 국민음료 베지밀 프로젝트',type:'Brand identity',disciplines:'Brand identity, Packaging, Brand experience',year:'2026',cover:'vegemil-hero',film:{src:'assets/vegemil-film.mp4',label:'베지밀 프로젝트 영상'},subtitle:'모든 세대의 건강한 일상을 제안하는 베지밀 웰니스 리브랜딩 프로젝트.',awards:['Korea International Award | 특선'],gallery:['vegemil-hero','vegemil-sharing','vegemil-identity','vegemil-logo-ko','vegemil-logo-en','vegemil-graphics','vegemil-packages','vegemil-prototypes','vegemil-gift','vegemil-gift-life','vegemil-pocket','vegemil-together','vegemil-daily','vegemil-shirt','vegemil-shirt-back','vegemil-shirt-detail','vegemil-shirt-life','vegemil-pyramid','vegemil-bottles','vegemil-keyring','vegemil-bloom-lab','vegemil-wellness-space'],description:'베지밀의 50년 헤리티지와 신뢰를 바탕으로, 모든 세대가 일상에서 선택하는 웰니스 브랜드로 재정의했습니다. 고착화된 이미지를 개선하고 젊은 세대와의 접점을 넓히기 위해 ‘모두를 위한 균형(Balanced Circle for All)’을 중심으로 패키지와 그래픽 시스템을 재설계했습니다. 재활용 가능한 선물형 패키지와 굿즈로 지속 가능한 소비를 제안하고, 오프라인 공간 ‘Vege Bloom Lab’에서 건강한 일상을 경험하도록 설계해 브랜드 경험을 확장했습니다. 이를 통해 건강한 소비와 지속 가능한 식문화를 연결하는 브랜드 방향성을 제시합니다.'},
   {
     id:'grips',
     title:'GRIPS',
     ko:'그립',
     fullTitle:'상지 결손 아동의 예체능 참여를 돕는 의수 : 그립',
     type:'Product',
-    year:'—',
+    year:'2026',
     cover:'grips-overview',
     gallery:['grips-overview','grips-racket','grips-hand','grips-prototype','grips-strap','grips-wearing','grips-mechanism','grips-research','grips-jump-rope'],
     description:'GRIPS는 상지 절단 아동이 학교 예체능 활동에 보다 자유롭게 참여할 수 있도록 개발한 맞춤형 저비용 의수 프로젝트입니다. 기존 고기능 의수는 높은 가격과 성장기에 따른 반복 교체 부담으로 활용이 어려운 점에 착안하여, 3D 프린팅 기반의 경제적인 제작 방식을 제안했습니다. 예체능 활동에 필요한 다양한 파지 동작을 연구해 반영했으며, TPU 소재를 활용한 유연한 무관절 손가락 구조, 손목 다이얼 메커니즘, 실 당김 방식, 실리콘 그립을 적용해 사용성과 활동 안정성을 높였습니다. 이를 통해 성장기 아동의 학급 예체능 활동 참여 기회를 확대하는 것을 목표로 합니다.'
@@ -58,10 +58,10 @@ function home(){
   return `<h1 class="sr-only">${esc(profile.siteName)} — Selected works</h1><div class="home-grid"><section class="home-rail" tabindex="0" aria-label="왼쪽 프로젝트 목록 — 별도로 스크롤"><div class="rail-content">${railCard(p,'poster',{eager:true})}${railCard(vegemil)}<a class="rail-end" href="#/index">View project index ↗</a></div></section><section class="home-rail" tabindex="0" aria-label="오른쪽 프로젝트 목록 — 별도로 스크롤"><div class="rail-content">${railCard(weave,'weave-hero',{eager:true})}${railCard(grips)}${railCard(p,'guide')}<article class="rail-item">${railMeta(p,'Brand film')}${videoPreview()}</article>${railCard(p,'signage')}<a class="rail-end" href="#/cv">CV ↗</a></div></section></div>`;
 }
 function filterButtons(){return `<div class="filters" aria-label="Filter by discipline">${types.map(t=>`<button type="button" data-filter="${t}" class="${state.filter===t?'active':''}" aria-pressed="${state.filter===t}">${t}</button>`).join('')}</div>`}
-function grid(){const list=selected();return `<h1 class="sr-only">Projects</h1><div class="subbar"><span class="eyebrow">Projects / 2024—2026</span>${filterButtons()}<span class="results-count">${String(list.length).padStart(2,'0')} projects</span></div><div class="project-grid">${list.map(card).join('')}</div>`}
+function grid(){const list=selected();return `<h1 class="sr-only">Projects</h1><div class="subbar"><span class="eyebrow">Projects / 2026</span>${filterButtons()}<span class="results-count">${String(list.length).padStart(2,'0')} projects</span></div><div class="project-grid">${list.map(card).join('')}</div>`}
 function index(){
   const list=selected();
-  return `<h1 class="sr-only">Project index</h1><div class="index-layout"><aside class="index-sidebar"><p>Index<br><span class="eyebrow">2024—2026</span></p><p class="eyebrow">Type of work</p>${filterButtons()}<p class="index-caption">An overview of selected works.<br>프로젝트명에 마우스를 올려<br>이미지를 미리 볼 수 있습니다.</p></aside><section aria-label="Project index"><div class="index-table-head"><span>No.</span><span>Project</span><span>Discipline</span><span>Year</span></div>${list.map(p=>`<a class="index-row" href="#/project/${p.id}" data-preview="${p.id}"><span>${String(projects.indexOf(p)+1).padStart(2,'0')}</span><span class="row-title">${p.title}${p.team?'<small class="team-label">Team project</small>':''}</span><span class="row-type">${p.type}</span><span class="row-year">${p.year} ↗</span></a>`).join('')}<div class="index-bottom"><span>${String(list.length).padStart(2,'0')} selected projects</span><span>Selected works & studies</span></div></section></div><div class="index-preview" aria-hidden="true"></div>`;
+  return `<h1 class="sr-only">Project index</h1><div class="index-layout"><aside class="index-sidebar"><p>Index<br><span class="eyebrow">2026</span></p><p class="eyebrow">Type of work</p>${filterButtons()}<p class="index-caption">An overview of selected works.<br>프로젝트명에 마우스를 올리면<br>해당 행 아래에 이미지가 표시됩니다.</p></aside><section aria-label="Project index"><div class="index-table-head"><span>No.</span><span>Project</span><span>Discipline</span><span>Year</span></div>${list.map(p=>`<a class="index-row" href="#/project/${p.id}" data-preview="${p.id}"><span>${String(projects.indexOf(p)+1).padStart(2,'0')}</span><span class="row-title">${p.title}${p.team?'<small class="team-label">Team project</small>':''}</span><span class="row-type">${p.type}</span><span class="row-year">${p.year} ↗</span></a>`).join('')}<div class="index-bottom"><span>${String(list.length).padStart(2,'0')} selected projects</span><span>Selected works & studies</span></div></section></div><div class="index-preview" aria-hidden="true" hidden></div>`;
 }
 function cvEntry(entry){return `<div class="cv-entry"><p>${esc(entry.title)}</p><p>${esc(entry.detail)}</p><p>${esc(entry.dates)}</p></div>`}
 function cv(){
@@ -78,8 +78,9 @@ function gallery(p){
 }
 function detail(p){
   const n=projects[(projects.indexOf(p)+1)%projects.length];
+  const awards=p.awards?.length?`<section class="project-award" aria-label="수상 내역"><span>${p.awards.length===1?'Award':'Awards'}</span>${p.awards.map(award=>`<p>${esc(award)}</p>`).join('')}</section>`:'';
   const credits=p.team?`<dt>Type</dt><dd>Team project / 팀 프로젝트</dd><dt>My role</dt><dd><ul class="project-roles" aria-label="담당 역할">${p.roles.map(role=>`<li>${esc(role)}</li>`).join('')}</ul></dd>`:'';
-  return `<div class="detail-layout"><aside class="detail-info"><span class="detail-number">Project ${String(projects.indexOf(p)+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span><h1>${p.title}</h1>${p.fullTitle?`<h2 class="project-full-title">${esc(p.fullTitle)}</h2>`:''}${p.subtitle?`<p class="project-subtitle">${esc(p.subtitle)}</p>`:''}<dl><dt>Project</dt><dd>${p.ko}</dd><dt>Discipline</dt><dd>${p.disciplines||p.type}</dd>${p.material?`<dt>Material</dt><dd>${p.material}</dd>`:''}${p.year==='—'?'':`<dt>Year</dt><dd>${p.year}</dd>`}${credits}</dl><p class="description">${p.description}</p>${p.award?`<section class="project-award" aria-label="수상 내역"><span>Award</span><p>${esc(p.award)}</p></section>`:''}${p.film?'<a class="film-jump" href="#film" data-film-jump>Watch film ↓</a>':''}<a href="#/projects" class="back-link">← All projects</a></aside><article class="detail-assets" aria-label="${p.title} gallery">${gallery(p)}<a class="next-project" href="#/project/${n.id}"><span>Next project</span><span>${n.title} ↗</span></a></article></div>`;
+  return `<div class="detail-layout"><aside class="detail-info"><span class="detail-number">Project ${String(projects.indexOf(p)+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span><h1>${p.title}</h1>${p.fullTitle?`<h2 class="project-full-title">${esc(p.fullTitle)}</h2>`:''}${p.subtitle?`<p class="project-subtitle">${esc(p.subtitle)}</p>`:''}<dl><dt>Project</dt><dd>${p.ko}</dd><dt>Discipline</dt><dd>${p.disciplines||p.type}</dd>${p.material?`<dt>Material</dt><dd>${p.material}</dd>`:''}${p.year==='—'?'':`<dt>Year</dt><dd>${p.year}</dd>`}${credits}</dl><p class="description">${p.description}</p>${awards}${p.film?'<a class="film-jump" href="#film" data-film-jump>Watch film ↓</a>':''}<a href="#/projects" class="back-link">← All projects</a></aside><article class="detail-assets" aria-label="${p.title} gallery">${gallery(p)}<a class="next-project" href="#/project/${n.id}"><span>Next project</span><span>${n.title} ↗</span></a></article></div>`;
 }
 function render({keepScroll=false}={}){
   disposeMotif();
@@ -125,6 +126,43 @@ function bindAssetErrors(root=main){
     if(img.complete&&img.naturalWidth===0)fallback();
   });
 }
+function bindIndexPreview(){
+  const preview=main.querySelector('.index-preview');
+  if(!preview)return;
+  let hoveredRow;
+  let focusedRow;
+
+  function update(){
+    const row=hoveredRow||focusedRow;
+    preview.hidden=!row;
+    if(!row||preview.parentElement===row)return;
+    const project=projects.find(p=>p.id===row.dataset.preview);
+    preview.innerHTML=cover(project);
+    row.append(preview);
+    bindAssetErrors(preview);
+  }
+
+  main.querySelectorAll('[data-preview]').forEach(row=>{
+    row.addEventListener('pointerenter',event=>{
+      if(event.pointerType==='touch')return;
+      hoveredRow=row;
+      update();
+    });
+    row.addEventListener('pointerleave',()=>{
+      if(hoveredRow===row)hoveredRow=null;
+      update();
+    });
+    row.addEventListener('focus',()=>{
+      if(!row.matches(':focus-visible'))return;
+      focusedRow=row;
+      update();
+    });
+    row.addEventListener('blur',()=>{
+      if(focusedRow===row)focusedRow=null;
+      update();
+    });
+  });
+}
 function bind(){
   bindAssetErrors();
   disposeMotif=bindMotifMotion(main);
@@ -142,12 +180,7 @@ function bind(){
     a.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')cursor.classList.add('visible')});
     a.addEventListener('pointerleave',()=>cursor.classList.remove('visible'));
   });
-  const preview=main.querySelector('.index-preview');
-  main.querySelectorAll('[data-preview]').forEach(a=>{
-    const show=()=>{const p=projects.find(p=>p.id===a.dataset.preview);preview.innerHTML=cover(p);preview.classList.add('show');bindAssetErrors(preview)};
-    a.addEventListener('pointerenter',show);a.addEventListener('focus',show);
-    a.addEventListener('pointerleave',()=>preview.classList.remove('show'));a.addEventListener('blur',()=>preview.classList.remove('show'));
-  });
+  bindIndexPreview();
   main.querySelectorAll('.video-poster').forEach(button=>button.addEventListener('click',()=>{
     const section=button.closest('.video-preview');
     const iframe=document.createElement('iframe');
